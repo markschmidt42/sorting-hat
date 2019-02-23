@@ -155,6 +155,8 @@ const onLoad = () => {
     // Let's define our first command. First the text we expect, and then the function it should call
     var commands = {
       "please sort me": runSort,
+      "please sort her": runSort,
+      "please sort him": runSort,
       "sort me please": runSort,
       "sort me": runSort,
       "sorting hat, plesae sort me": runSort
