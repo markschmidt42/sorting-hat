@@ -22,7 +22,6 @@ body.selected-house {
     transition: background-image 300ms ease-in 200ms;    
 }
 
-
 #hat {
   width: 100%;
   text-align: center;
@@ -45,11 +44,9 @@ body.selected-house {
 }
 
 .fadein {
-    -webkit-animation: fadein 2s; 
-    transition: opacity 2s ease-in;    
+    -webkit-animation: fadein 3s; 
+    transition: opacity 3s ease-in;    
 }
-
-
 
 @keyframes fadein {
     from { opacity: 0; }
