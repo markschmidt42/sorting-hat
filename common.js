@@ -40,7 +40,8 @@ const runSort = () => {
         $instr.innerText = "I'm sorry, all of the houses are full!";
         return;
     }
-    playRandomSound();
+    annyang.abort();
+    setTimout(playRandomSound, 500);
 }
 
 const startSorting = () => {
@@ -73,7 +74,6 @@ const resetScene = () => {
 
 let mainAudio = null;
 const playSound = (path) => {
-    annyang.abort();
     mainAudio = new Audio(path);
     if (!path.includes('sad')) {
         mainAudio.onended = doneSorting;
