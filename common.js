@@ -72,6 +72,7 @@ const doneSorting = () => {
 };
 
 const setScene = () => {
+  $houseImg.className = "fadein";
   document.body.className = "selected-house";
   
   document.body.style.backgroundImage =

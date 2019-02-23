@@ -6,17 +6,22 @@ body {
   background: #333;
   background-size: cover;
   background-image: url('images/main-bg.jpg');
+  -webkit-transition-property: background-image 300ms ease-in 200ms;
+  transition: background-image 300ms ease-in 200ms;    
 }
   
-.heard-it {
+body.heard-it {
     background: #003300;
     background-size: cover;
     background-image: url('images/main-bg-heard-it.jpg');
 }
 
-.selected-house {
-    background-size: contain;
+body.selected-house {
+    background-size: cover;
+    -webkit-transition-property: background-image 300ms ease-in 200ms;
+    transition: background-image 300ms ease-in 200ms;    
 }
+
 
 #hat {
   width: 100%;
@@ -37,6 +42,24 @@ body {
 
 #house-img {
   height: 300px;
+}
+
+.fadein {
+    -webkit-animation: fadein 2s; 
+    transition: opacity 2s ease-in;    
+}
+
+
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .hide {
