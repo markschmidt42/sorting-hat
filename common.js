@@ -44,7 +44,7 @@ const runSort = () => {
 }
 
 const startSorting = () => {
-    annyang.stop();
+    annyang.pause();
     clearTimeout(resetTimeout);
     resetScene();
     $instr.style.display = "none";
@@ -53,7 +53,7 @@ const startSorting = () => {
 }
 
 const doneSorting = () => {
-    annyang.start();
+    annyang.resume();
     isPlaying = false;
     $hatImg.src = 'images/still.png'
     setScene();
