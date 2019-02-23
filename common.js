@@ -119,10 +119,13 @@ const onLoad = () => {
 
     $hat.onclick = runSort;
 
+    // https://github.com/TalAter/annyang/tree/master/docs#abort
     if (annyang) {
         // Let's define our first command. First the text we expect, and then the function it should call
         var commands = {
-          'please sort me': runSort
+            'please sort me': runSort
+            ,'sort me': runSort
+            ,'sorting hat, plesae sort me': runSort
         };
       
         // Add our commands to annyang
@@ -131,6 +134,21 @@ const onLoad = () => {
         // Start listening. You can call this here, or attach this call to an event, button, etc.
         annyang.start();
       }
+
+    var images = new Array()
+    function preload() {
+        for (i = 0; i < preload.arguments.length; i++) {
+            images[i] = new Image()
+            images[i].src = preload.arguments[i]
+        }
+    }
+    preload('images/animated.gif');
+    houses.forEach((house) => {
+        preload(
+            "images/"+ house +".jpg",
+            "images/bg-"+ house +".jpg"
+        )
+    });
 }
 
 window.onload = onLoad;
