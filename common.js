@@ -24,6 +24,7 @@ const getRandomHouse = () => {
 
 
 const playRandomSound = () => {
+    console.log('playRandomSound()')
     selectedOption = getRandomHouse();
     sound = selectedOption;
     path = 'audio/'+ sound +'.mp3';
@@ -40,8 +41,11 @@ const runSort = () => {
         $instr.innerText = "I'm sorry, all of the houses are full!";
         return;
     }
+    console.log('abort mic')
     annyang.abort();
-    setTimout(playRandomSound, 500);
+
+    console.log('playRandomSound timeout')
+    setTimout(playRandomSound, 1000);
 }
 
 const startSorting = () => {
