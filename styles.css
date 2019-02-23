@@ -4,12 +4,18 @@
 
 body {
   background: #333;
-  background-size: contain;
+  background-size: cover;
+  background-image: url('images/main-bg.jpg');
+}
+  
+.heard-it {
+    background: #003300;
+    background-size: cover;
+    background-image: url('images/main-bg-heard-it.jpg');
 }
 
-.heard-it {
-  background: #003300;
-  background-image: none;
+.selected-house {
+    background-size: contain;
 }
 
 #hat {
@@ -50,10 +56,6 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.heard-it #instructions {
-  display: none;
-}
-
 .reset #instructions {
   display: block;
 }
@@ -61,3 +63,9 @@ body {
 .reset #house-img {
   display: none;
 }
+
+.heard-it #instructions,
+.animating #instructions {
+    display: none;
+}
+  

@@ -23,7 +23,6 @@ const getRandomHouse = () => {
 };
 
 const playRandomSound = () => {
-  document.body.className = null;
   console.log("playRandomSound()");
   selectedOption = getRandomHouse();
   sound = selectedOption;
@@ -43,11 +42,10 @@ const runSort = () => {
     return;
   }
 
-  document.body.className = "heard-it";
+  startSorting();
   console.log("annyang.abort();");
   if (useMic()) annyang.abort();
 
-  startSorting();
   console.log("playRandomSound timeout");
   setTimeout(playRandomSound, 1000);
 };
@@ -55,10 +53,12 @@ const runSort = () => {
 const startSorting = () => {
   clearTimeout(resetTimeout);
   resetScene(true);
+  document.body.className = "heard-it";
   isPlaying = true;
 };
 
 const startAnimation = () => {
+  document.body.className = "animating";
   $hatImg.src = "images/animated.gif";
 };
 
@@ -72,6 +72,8 @@ const doneSorting = () => {
 };
 
 const setScene = () => {
+  document.body.className = "selected-house";
+  
   document.body.style.backgroundImage =
     "url('images/bg-" + selectedOption + ".jpg')";
   $houseImg.src = "images/" + selectedOption + ".jpg";
@@ -79,6 +81,7 @@ const setScene = () => {
 };
 
 const resetScene = hideInstructions => {
+  document.body.className = null;
   document.body.style.backgroundImage = null;
   $houseName.className = "reset";
 };
@@ -143,6 +146,7 @@ const onLoad = () => {
     // Let's define our first command. First the text we expect, and then the function it should call
     var commands = {
       "please sort me": runSort,
+      "sort me please": runSort,
       "sort me": runSort,
       "sorting hat, plesae sort me": runSort
     };
@@ -167,6 +171,7 @@ const onLoad = () => {
       images[i].src = preload.arguments[i];
     }
   }
+  preload("images/main-bg-heard-it.jpg");
   preload("images/animated.gif");
   houses.forEach(house => {
     preloadAudio("audio/" + house + ".mp3");
