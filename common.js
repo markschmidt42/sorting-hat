@@ -44,7 +44,6 @@ const runSort = () => {
 }
 
 const startSorting = () => {
-    annyang.abort();
     clearTimeout(resetTimeout);
     resetScene();
     $instr.style.display = "none";
@@ -74,6 +73,7 @@ const resetScene = () => {
 
 let mainAudio = null;
 const playSound = (path) => {
+    annyang.abort();
     mainAudio = new Audio(path);
     if (!path.includes('sad')) {
         mainAudio.onended = doneSorting;
