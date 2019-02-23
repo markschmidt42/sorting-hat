@@ -46,7 +46,7 @@ const runSort = () => {
     annyang.abort();
 
     console.log('playRandomSound timeout')
-    setTimeout(playRandomSound, 1000);
+    setTimeout(playRandomSound, 5000);
 }
 
 const startSorting = () => {
