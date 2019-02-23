@@ -41,11 +41,12 @@ const runSort = () => {
         $instr.innerText = "I'm sorry, all of the houses are full!";
         return;
     }
-    console.log('abort mic')
+
+    console.log('annyang.abort();')
     annyang.abort();
 
     console.log('playRandomSound timeout')
-    setTimeout(playRandomSound, 500);
+    setTimeout(playRandomSound, 1000);
 }
 
 const startSorting = () => {
@@ -57,6 +58,7 @@ const startSorting = () => {
 }
 
 const doneSorting = () => {
+    console.log('annyang.resume();')
     annyang.resume();
     isPlaying = false;
     $hatImg.src = 'images/still.png'
@@ -141,6 +143,7 @@ const onLoad = () => {
         annyang.addCommands(commands);
       
         // Start listening. You can call this here, or attach this call to an event, button, etc.
+        console.log('annyang.start();')
         annyang.start();
       }
 
