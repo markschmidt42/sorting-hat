@@ -32,6 +32,15 @@ body {
     height:300px;
 }
 
+
+.hide {
+    display:none;
+}
+
+.show {
+    display:block;
+}
+
 #instructions {
     display:none;
     margin-top: 50px;

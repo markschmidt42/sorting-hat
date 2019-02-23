@@ -44,6 +44,7 @@ const runSort = () => {
     }
 
     document.body.className = 'heard-it';
+    $instr.className = 'hide';
     console.log('annyang.abort();')
     annyang.abort();
 
