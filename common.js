@@ -88,12 +88,16 @@ const resetScene = hideInstructions => {
 
 let mainAudio = null;
 const playSound = path => {
-  mainAudio = new Audio(path);
+  mainAudio = document.getElementById("audio");
+  mainAudio.addEventListener("canplaythrough", loadedMainAudio, false);
+  mainAudio.src = path;
+  //mainAudio = new Audio(path);
   if (!path.includes("sad")) {
     mainAudio.onended = doneSorting;
-    mainAudio.addEventListener("canplaythrough", loadedMainAudio, false);
   }
 };
+
+
 
 const loadedMainAudio = () => {
   startAnimation();
