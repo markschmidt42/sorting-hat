@@ -7,6 +7,10 @@ body {
     background-size: contain;
 }
 
+.heard-it {
+    background:#003300;
+}
+
 #hat {
     width:100%;
     text-align: center;
