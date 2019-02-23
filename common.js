@@ -24,6 +24,7 @@ const getRandomHouse = () => {
 
 
 const playRandomSound = () => {
+    document.body.className = null;
     console.log('playRandomSound()')
     selectedOption = getRandomHouse();
     sound = selectedOption;
@@ -42,6 +43,7 @@ const runSort = () => {
         return;
     }
 
+    document.body.className = 'heard-it';
     console.log('annyang.abort();')
     annyang.abort();
 
