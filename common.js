@@ -135,6 +135,11 @@ const onLoad = () => {
         annyang.start();
       }
 
+    function preloadAudio(url) {
+        var audio = new Audio();
+        audio.src = url;
+    }
+        
     var images = new Array()
     function preload() {
         for (i = 0; i < preload.arguments.length; i++) {
@@ -144,6 +149,7 @@ const onLoad = () => {
     }
     preload('images/animated.gif');
     houses.forEach((house) => {
+        preloadAudio("audio/"+ house +".mp3");
         preload(
             "images/"+ house +".jpg",
             "images/bg-"+ house +".jpg"
