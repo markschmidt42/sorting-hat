@@ -48,6 +48,7 @@ const runSort = () => {
     console.log('annyang.abort();')
     if (useMic()) annyang.abort();
 
+    startSorting();
     console.log('playRandomSound timeout')
     setTimeout(playRandomSound, 1000);
 }
@@ -56,7 +57,10 @@ const startSorting = () => {
     clearTimeout(resetTimeout);
     resetScene(true);
     isPlaying = true;
-    $hatImg.src = 'images/animated.gif'
+}
+
+const startAnimation = () => {
+    $hatImg.src = 'images/animated.gif'    
 }
 
 const doneSorting = () => {
@@ -88,13 +92,11 @@ const playSound = (path) => {
     if (!path.includes('sad')) {
         mainAudio.onended = doneSorting;
         mainAudio.addEventListener('canplaythrough', loadedAudio, false);
-
-        startSorting()
-        isPlaying = true;
     }
 }
 
 const loadedAudio = () => {
+    startAnimation();
     mainAudio.play();
 }
 
