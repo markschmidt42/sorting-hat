@@ -44,7 +44,7 @@ const runSort = () => {
 }
 
 const startSorting = () => {
-    annyang.pause();
+    annyang.abort();
     clearTimeout(resetTimeout);
     resetScene();
     $instr.style.display = "none";
