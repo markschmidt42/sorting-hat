@@ -91,13 +91,17 @@ const playSound = path => {
   mainAudio = new Audio(path);
   if (!path.includes("sad")) {
     mainAudio.onended = doneSorting;
-    mainAudio.addEventListener("canplaythrough", loadedAudio, false);
+    mainAudio.addEventListener("canplaythrough", loadedMainAudio, false);
   }
 };
 
-const loadedAudio = () => {
+const loadedMainAudio = () => {
   startAnimation();
-  mainAudio.play();
+  // mainAudio.play();
+  const playPromise = mainAudio.play();
+  if (playPromise !== null){
+      playPromise.catch(() => { mainAudio.play(); })
+  }  
 };
 
 const shuffle = array => {
