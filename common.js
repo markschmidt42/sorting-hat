@@ -72,15 +72,20 @@ const resetScene = () => {
     $instr.style.display = "block";
 }
 
+let mainAudio = null;
 const playSound = (path) => {
-    var audio = new Audio(path);
+    mainAudio = new Audio(path);
     if (!path.includes('sad')) {
-        audio.onended = doneSorting;
+        mainAudio.onended = doneSorting;
+        mainAudio.addEventListener('canplaythrough', loadedAudio, false);
 
         startSorting()
         isPlaying = true;
     }
-    audio.play();
+}
+
+const loadedAudio = () => {
+    mainAudio.play();
 }
 
 const shuffle = (array) => {
