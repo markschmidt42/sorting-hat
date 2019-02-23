@@ -1,0 +1,46 @@
+* {
+    cursor: none;
+}
+
+body {
+    background: #333;
+    background-size: contain;
+}
+
+#hat {
+    width:100%;
+    text-align: center;
+    margin-top:20px;
+}
+
+#hat-img {
+    width:1000px;
+}
+
+#house-name {
+    width:100%;
+    text-align:center;
+    margin-top: 10px;
+    color:white;
+}
+
+#house-img {
+    height:300px;
+}
+
+#instructions {
+    display:none;
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 40pt;
+    color:goldenrod;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.reset #instructions {
+    display:block;
+}
+
+.reset #house-img {
+    display:none;
+}
