@@ -159,9 +159,26 @@ const onLoad = () => {
     annyang.start();
   }
 
+  function audioFullyLoaded() {
+    console.log('audioFullyLoaded')
+  }
+
   function preloadAudio(url) {
     var audio = new Audio();
+    audio.addEventListener('canplaythrough', loadedAudio, false);
     audio.src = url;
+  }
+
+  var loaded = 0;
+  function loadedAudio() {
+      // this will be called every time an audio file is loaded
+      // we keep track of the loaded files vs the requested files
+      loaded++;
+      console.log(loaded)
+      if (loaded == audioFiles.length){
+        // all have loaded
+        audioFullyLoaded();
+      }
   }
 
   var images = new Array();
@@ -171,12 +188,18 @@ const onLoad = () => {
       images[i].src = preload.arguments[i];
     }
   }
-  preload("images/main-bg-heard-it.jpg");
-  preload("images/animated.gif");
+  audioFiles = []
   houses.forEach(house => {
-    preloadAudio("audio/" + house + ".mp3");
+    audioFiles.push("audio/" + house + ".mp3");
     preload("images/" + house + ".jpg", "images/bg-" + house + ".jpg");
   });
+  preload("images/main-bg-heard-it.jpg");
+  preload("images/animated.gif");
+
+  // we start preloading all the audio files
+  for (var i in audioFiles) {
+    preloadAudio(audioFiles[i]);
+  }
 };
 
 window.onload = onLoad;
