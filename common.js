@@ -43,10 +43,10 @@ const runSort = () => {
         return;
     }
 
+    $instr.style.display = "none";
     document.body.className = 'heard-it';
-    $instr.className = 'hide';
     console.log('annyang.abort();')
-    annyang.abort();
+    if (useMic()) annyang.abort();
 
     console.log('playRandomSound timeout')
     setTimeout(playRandomSound, 1000);
@@ -54,15 +54,14 @@ const runSort = () => {
 
 const startSorting = () => {
     clearTimeout(resetTimeout);
-    resetScene();
-    $instr.style.display = "none";
+    resetScene(true);
     isPlaying = true;
     $hatImg.src = 'images/animated.gif'
 }
 
 const doneSorting = () => {
     console.log('annyang.resume();')
-    annyang.resume();
+    if (useMic()) annyang.resume();
     isPlaying = false;
     $hatImg.src = 'images/still.png'
     setScene();
@@ -75,10 +74,12 @@ const setScene = () => {
     $houseName.className = null;    
 }
 
-const resetScene = () => {
+const resetScene = (hideInstructions) => {
     document.body.style.backgroundImage = null;
     $houseName.className = 'reset';
-    $instr.style.display = "block";
+    if (!hideInstructions) {
+        $instr.style.display = "block";
+    }
 }
 
 let mainAudio = null;
@@ -115,6 +116,10 @@ const shuffle = (array) => {
 
     return array;
 }
+
+const useMic = () => {
+    return (!location.protocol.includes('file'))
+}
   
 const onLoad = () => {
     $hat = document.getElementById('hat');
@@ -134,7 +139,7 @@ const onLoad = () => {
     $hat.onclick = runSort;
 
     // https://github.com/TalAter/annyang/tree/master/docs#abort
-    if (annyang) {
+    if (useMic() && annyang) {
         // Let's define our first command. First the text we expect, and then the function it should call
         var commands = {
             'please sort me': runSort
